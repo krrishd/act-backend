@@ -1,5 +1,7 @@
 # Custom
 config.js
+*.swp
+app.yaml
 
 ############
 #   Node   #

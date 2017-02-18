@@ -4,7 +4,9 @@
   "description": "A tool to build activist agendas from current events.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gcloud app deploy --project act-api-159121"
   },
   "author": "Krish Dholakiya <krishna.dholakiya@gmail.com>",
   "license": "MIT",

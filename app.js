@@ -3,6 +3,18 @@
 const express = require('express');
 const app = express();
 
+const cors = (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+}
+
+app.configure(() => {
+  app.use(express.bodyParser());
+  app.use(express.methodOverride());
+  app.use(cors); 
+});
+
 const mongoose = require('mongoose');
 const DB_URL = process.env.MONGO_URI || require('./config').mongo_uri;
 mongoose.connect(DB_URL);
@@ -55,3 +67,8 @@ app.get('/api/cause/:id', (req, res) => {
         res.json(matchingCause);
       });
 });
+
+const port = process.env.PORT || 1776;
+app.listen(port);
+
+console.log(`Server listening on ${port}`);
