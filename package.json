@@ -1,0 +1,16 @@
+{
+  "name": "act",
+  "version": "1.0.0",
+  "description": "A tool to build activist agendas from current events.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Krish Dholakiya <krishna.dholakiya@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^3.5.3",
+    "mongoose": "^4.8.3",
+    "shortid": "^2.2.6"
+  }
+}
