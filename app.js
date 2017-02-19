@@ -10,9 +10,9 @@ const cors = (req, res, next) => {
 }
 
 app.configure(() => {
+  app.use(cors);  
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(cors); 
 });
 
 const mongoose = require('mongoose');
@@ -29,8 +29,9 @@ const CauseSchema = mongoose.Schema({
       link: String
     }
   ],
-  _id: {
+  shortId: {
     type: String,
+    unique: true,
     'default': shortid.generate
   }
 });
@@ -42,9 +43,8 @@ app.post('/api/new-cause', (req, res) => {
   Cause
     .create({
       description: req.body.description,
-      actions: req.body.actions
-    })
-    .exec((error, newCause) => {
+      actions: JSON.parse(req.body.actions)
+    }, (error, newCause) => {
       if (error) {
         res.status(500);
         res.json(error);
@@ -57,7 +57,7 @@ app.get('/api/cause/:id', (req, res) => {
   // getting the data of a certain cause via its id
   Cause
       .find({
-        _id: req.params.id
+        shortId: req.params.id
       })
       .exec((error, matchingCause) => {
         if (error) {
