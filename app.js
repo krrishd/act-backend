@@ -43,7 +43,7 @@ app.post('/api/new-cause', (req, res) => {
   Cause
     .create({
       description: req.body.description,
-      actions: JSON.parse(req.body.actions)
+      actions: req.body.actions
     }, (error, newCause) => {
       if (error) {
         res.status(500);
