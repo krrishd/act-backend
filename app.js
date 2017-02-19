@@ -1,7 +1,6 @@
 'use strict';
 
-const express = require('express');
-const app = express();
+const app = require('express')();
 
 const cors = (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
